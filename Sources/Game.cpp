@@ -3,7 +3,7 @@
 
 // TODO: 砲台の位置を画面左に、ターゲットの位置を画面右に移動させる。(A)
 // TODO: 雲の位置を左から右に動かす。見えなくなったら左端に戻す。(B)
-// TODO: 砲台を青い壁に沿って上下に動かす。(C)
+// TODO: 砲台を青い壁に沿って上下に動かす。(C) //HW15A213 山本 裕生
 // TODO: 弾のスピードを速くし、弾が画面右端を通り越したら再度発射可能にする。(D)
 // TODO: スコアのサイズを大きくする。(E)
 // TODO: スコアを100点ずつ加算するようにし、5桁の表示に変える。(F)
@@ -13,6 +13,7 @@
 
 Vector2 cloudPos;       //!< 雲の位置
 Vector2 cannonPos;      //!< 砲台の位置
+Vector2 cannonInitPos;  //!< 砲台の初期位置の追加 HW15A213 山本 裕生
 Vector2 bulletPos;      //!< 弾の位置
 Rect    targetRect;     //!< ターゲットの矩形
 int     score;          //!< スコア
@@ -23,6 +24,7 @@ void Start()
 {
     cloudPos = Vector2(-320, 100);
     cannonPos = Vector2(-80, -150);
+    cannonInitPos = cannonPos;// 砲台の初期位置を取得 HW15A213 山本 裕生
     targetRect = Rect(80, -140, 40, 40);
     bulletPos.x = -999;
     score = 0;
@@ -61,7 +63,8 @@ void Update()
     }
 
     // 砲台の描画
-    FillRect(Rect(cannonPos.x-10, -140, 20, 100), Color::blue);
+    FillRect(Rect(cannonInitPos.x-10, -140, 20, 100), Color::blue);// 描画位置を砲台の初期位置に HW15A213 山本 裕生
+    cannonPos.y = -160 + 100 * Mathf::PingPong(Time::time, 1.0f);// 砲台を自動的に上下移動させる HW15A213 山本 裕生
     DrawImage("cannon.png", cannonPos);
 
     // ターゲットの描画
