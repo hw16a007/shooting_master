@@ -75,8 +75,9 @@ void Update()
     FillRect(targetRect, Color::red);
 
     // スコアの描画
-    SetFont("nicoca_v1.ttf", 60.0f);  //hw16a096 白永　滉　スコアの描画を大きくしました
-    DrawText(FormatString("%02d", score), Vector2(-319, 189), Color::black);
-    DrawText(FormatString("%02d", score), Vector2(-320, 190), Color::white);
+    SetFont("nicoca_v1.ttf", 60.0f);
+    DrawText(FormatString("%05d", score*100), Vector2(-319, 189), Color::black);　　//hw16a096 白永　滉　スコアを100点ずつ加算するようにし、5桁の表示に変えました
+    DrawText(FormatString("%05d", score*100), Vector2(-320, 190), Color::white);
+
 }
 
