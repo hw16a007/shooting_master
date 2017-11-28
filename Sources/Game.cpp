@@ -61,7 +61,11 @@ void Update()
     // 背景の描画
     Clear(Color::cyan);
     FillRect(Rect(-320, -240, 640, 100), Color::green);
-
+    // hw15a153 野間涼司 (B)
+    if(cloudPos.x > Screen::size().x / 2){
+        cloudPos.x = -Screen::size().x / 2 - 256;
+    }
+    cloudPos.x++;
     // 雲の描画
     DrawImage("cloud1.png", cloudPos);
 
