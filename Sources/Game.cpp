@@ -22,8 +22,9 @@ int     score;          //!< スコア
 void Start()
 {
     cloudPos = Vector2(-320, 100);
-    cannonPos = Vector2(-80, -150);
-    targetRect = Rect(80, -140, 40, 40);
+    // HW15A153 野間涼司 (A)
+    cannonPos = Vector2(-Screen::size().x/2 + 20, -150);
+    targetRect = Rect(Screen::size().x/2 - 50, -140, 40, 40);
     bulletPos.x = -999;
     score = 0;
 }
